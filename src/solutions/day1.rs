@@ -1,46 +1,34 @@
 use io::Result;
 
 use crate::solver::Solver;
-use std::io::{self, BufRead, BufReader};
+use std::cmp::Reverse;
+use std::io::{self, BufReader, Read};
 
 pub struct Problem;
 
 impl Solver for Problem {
-    type Input = Vec<Vec<u128>>;
+    type Input = Vec<u128>;
     type Output = u128;
 
     fn parse_input<R: io::Read>(&self, r: R) -> Self::Input {
-        let lines: Vec<String> = BufReader::new(r).lines().filter_map(Result::ok).collect();
+        let mut data = String::new();
+        BufReader::new(r).read_to_string(&mut data).unwrap();
 
-        let mut result = Vec::new();
-
-        let mut current_vec = Vec::new();
-        for line in lines.iter() {
-            if line.is_empty() {
-                result.push(current_vec.clone());
-                current_vec.clear();
-            } else {
-                current_vec.push(line.parse().unwrap());
-            }
-        }
-        if !current_vec.is_empty() {
-            result.push(current_vec.clone());
-        }
-
-        result
+        data.split("\n\n")
+            .map(|lines| lines.lines().filter_map(|x| x.parse::<u128>().ok()).sum())
+            .collect()
     }
 
     fn solve_first(&self, input: &Self::Input) -> Self::Output {
-        input.iter().map(|x| x.iter().sum::<u128>()).max().unwrap()
+        *input.iter().max().unwrap()
     }
 
     fn solve_second(&self, input: &Self::Input) -> Self::Output {
-        let mut calories: Vec<u128> = input.iter().map(|x| x.iter().sum::<u128>()).collect();
+        let mut calories: Vec<u128> = input.clone();
 
-        calories.sort();
-        println!("{:?}", calories);
+        calories.sort_unstable_by_key(|x| Reverse(*x));
 
-        calories.iter().rev().take(3).sum::<u128>()
+        calories.iter().take(3).sum()
     }
 }
 
@@ -64,8 +52,7 @@ mod tests {
 8000
 9000
 
-10000
-"#;
+10000"#;
         let input = Problem {}.parse_input(StringReader::new(input));
         let result = Problem {}.solve_first(&input);
         assert_eq!(result, 24000);

@@ -1,20 +1,17 @@
 use crate::solver::Solver;
-use std::fs::File;
+use std::error::Error;
+use std::fs;
 mod day1;
-// End imports 
+// End imports
 
-fn load_day(day: u32) -> File {
-    let path = format!("inputs/day{}.txt", day);
-    match File::open(&path) {
-        Err(why) => panic!("couldn't open {}: {}", path, why),
-        Ok(file) => file,
-    }
+fn load_day(day: u32) -> Result<String, Box<dyn Error>> {
+    Ok(fs::read_to_string(format!("inputs/day{}.txt", day))?)
 }
 
 pub fn solve(day: u32) {
-    let day_file = load_day(day);
+    let raw_input = load_day(day).expect("Problem parsing day input");
     match day {
-        1 => day1::Problem {}.solve(day_file),
+        1 => day1::Problem {}.solve(raw_input),
         d => println!("Day {} has not been solved yet", d),
     }
 }

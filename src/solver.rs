@@ -4,7 +4,7 @@ pub trait Solver {
     type Input;
     type Output: Display;
 
-    fn parse_input<R: io::Read + io::Seek>(&self, r: R) -> Self::Input;
+    fn parse_input<R: io::Read>(&self, r: R) -> Self::Input;
     fn solve_first(&self, input: &Self::Input) -> Self::Output;
     fn solve_second(&self, input: &Self::Input) -> Self::Output;
 

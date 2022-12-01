@@ -47,7 +47,7 @@ mod tests {
 """
 
 
-def get_input(day: int, year: int = 2021) -> str:
+def get_input(day: int, year: int = 2022) -> str:
     cookie = os.environ["AOC_SESSION"]
 
     return requests.get(
@@ -75,7 +75,6 @@ def main():
 
     # Get input
     day_input = get_input(day)
-    print(day_input)
     input_path = Path(f"inputs/day{day}.txt")
     input_path.write_text(day_input)
 

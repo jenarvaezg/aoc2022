@@ -2,6 +2,7 @@ use crate::solver::Solver;
 use std::error::Error;
 use std::fs;
 mod day1;
+mod day2;
 // End imports
 
 fn load_day(day: u32) -> Result<String, Box<dyn Error>> {
@@ -12,6 +13,7 @@ pub fn solve(day: u32) {
     let raw_input = load_day(day).expect("Problem parsing day input");
     match day {
         1 => day1::Problem {}.solve(raw_input),
+        2 => day2::Problem {}.solve(raw_input),
         d => println!("Day {} has not been solved yet", d),
     }
 }

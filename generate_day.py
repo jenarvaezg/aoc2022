@@ -23,7 +23,7 @@ def main():
     text = mod_path.read_text()
     text = text.replace("// End imports", f"mod day{day};\n// End imports ")
     text = text.replace(
-        "d => ", f"{day} => day{day}::Problem {{}}.solve(day_file),\n        d => "
+        "d => ", f"{day} => day{day}::Problem {{}}.solve(raw_input),\n        d => "
     )
     mod_path.write_text(text)
 

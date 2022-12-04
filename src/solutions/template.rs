@@ -24,18 +24,18 @@ impl Solver for Problem {
 mod tests {
     use super::*;
 
+    const EXAMPLE: &str = r#""#;
+
     #[test]
     fn test_first() {
-        let input = r#""#;
-        let input = Problem {}.parse_input(String::from(input)).unwrap();
+        let input = Problem {}.parse_input(String::from(EXAMPLE)).unwrap();
         let result = Problem {}.solve_first(&input);
         assert_eq!(result, None);
     }
 
     #[test]
     fn test_second() {
-        let input = r#""#;
-        let input = Problem {}.parse_input(String::from(input)).unwrap();
+        let input = Problem {}.parse_input(String::from(EXAMPLE)).unwrap();
         let result = Problem {}.solve_second(&input);
         assert_eq!(result, None);
     }

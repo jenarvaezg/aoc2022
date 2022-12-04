@@ -4,7 +4,8 @@ use std::fs;
 mod day1;
 mod day2;
 mod day3;
-// End imports 
+mod day4;
+// End imports  
 
 fn load_day(day: u32) -> Result<String, Box<dyn Error>> {
     Ok(fs::read_to_string(format!("inputs/day{}.txt", day))?)
@@ -16,6 +17,7 @@ pub fn solve(day: u32) {
         1 => day1::Problem {}.solve(raw_input),
         2 => day2::Problem {}.solve(raw_input),
         3 => day3::Problem {}.solve(raw_input),
+        4 => day4::Problem {}.solve(raw_input),
         d => println!("Day {} has not been solved yet", d),
     }
 }

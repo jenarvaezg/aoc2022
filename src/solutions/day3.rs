@@ -59,7 +59,7 @@ impl Solver for Problem {
                     let reduction = chunk
                         .map(|x| x.into_iter().collect::<HashSet<_>>())
                         .reduce(|accum, item| {
-                            accum.intersection(&item).cloned().collect::<HashSet<_>>()
+                            accum.intersection(&item).copied().collect::<HashSet<_>>()
                         })
                         .unwrap();
 

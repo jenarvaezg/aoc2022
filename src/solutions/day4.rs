@@ -1,5 +1,4 @@
 use crate::solver::Solver;
-use itertools::Itertools;
 use lazy_static::lazy_static;
 use regex::Regex;
 

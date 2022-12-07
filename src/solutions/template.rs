@@ -1,5 +1,4 @@
 use crate::solver::Solver;
-use std::cmp::Reverse;
 
 pub struct Problem;
 

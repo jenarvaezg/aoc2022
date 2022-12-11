@@ -11,7 +11,8 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
-// End imports  
+mod day11;
+// End imports   
 
 fn load_day(day: u32) -> Result<String, Box<dyn Error>> {
     Ok(fs::read_to_string(format!("inputs/day{}.txt", day))?)
@@ -30,6 +31,7 @@ pub fn solve(day: u32) {
         8 => day8::Problem {}.solve(raw_input),
         9 => day9::Problem {}.solve(raw_input),
         10 => day10::Problem {}.solve(raw_input),
+        11 => day11::Problem {}.solve(raw_input),
         d => println!("Day {} has not been solved yet", d),
     }
 }

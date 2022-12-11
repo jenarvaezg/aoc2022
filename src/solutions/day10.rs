@@ -1,7 +1,3 @@
-use std::collections::HashMap;
-
-use itertools::Itertools;
-
 use crate::solver::Solver;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

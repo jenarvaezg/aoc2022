@@ -4,7 +4,7 @@ pub struct Problem;
 
 impl Solver for Problem {
     type Input = Vec<u128>;
-    type Output = u128;
+    type Output = usize;
 
     fn parse_input(&self, raw_input: String) -> Option<Self::Input> {
         Some(Vec::new())

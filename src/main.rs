@@ -1,3 +1,4 @@
+mod grid;
 mod solutions;
 mod solver;
 use std::env;

@@ -19,6 +19,13 @@ impl GridPoint {
     pub fn new(x: usize, y: usize) -> Self {
         GridPoint { x, y }
     }
+
+    pub fn add(&self, (x, y): (isize, isize)) -> Self {
+        Self {
+            x: (self.x as isize + x) as usize,
+            y: (self.y as isize + y) as usize,
+        }
+    }
 }
 
 impl Coord for GridPoint {
@@ -45,6 +52,7 @@ impl Coord for (usize, usize) {
     }
 }
 
+#[allow(dead_code)]
 const DIRS: [(i64, i64); 8] = [
     (-1, -1),
     (-1, 0),
@@ -84,7 +92,7 @@ impl<T: Clone + Copy + PartialEq + Debug> Grid<T> {
         }
     }
 
-    pub fn find(&self, needle: T) -> Vec<GridPoint> {
+    pub fn filter(&self, needle: T) -> Vec<GridPoint> {
         self.cells
             .iter()
             .cloned()

@@ -74,7 +74,7 @@ impl Solver for Problem {
     }
 
     fn solve_second(&self, input: &Self::Input) -> Option<Self::Output> {
-        let starting_points = input.0.find('a');
+        let starting_points = input.0.filter('a');
         Some(
             starting_points
                 .into_iter()

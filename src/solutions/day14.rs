@@ -12,7 +12,7 @@ impl Solver for Problem {
     type Output = usize;
 
     fn parse_input(&self, raw_input: String) -> Option<Self::Input> {
-        let mut grid = Grid::new(vec!['.'; 1000 * 1000], 1000, 1000);
+        let mut grid = Grid::new(vec!['.'; 200 * 700], 200, 700);
         let lines: Vec<Vec<GridPoint>> = raw_input
             .lines()
             .map(|l| {
@@ -98,7 +98,7 @@ impl Solver for Problem {
             .y();
 
         for x in 0..1000 {
-            grid.set(&(x as usize, lowest + 2), '#');
+            grid.set(&(x as usize, (lowest + 2) as usize), '#');
         }
 
         loop {

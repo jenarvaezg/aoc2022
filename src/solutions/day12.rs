@@ -14,10 +14,7 @@ fn shortest_route(grid: &Grid<char>, start: GridPoint, end: GridPoint) -> Option
         }
         let current_value = grid.get(&point).unwrap();
         for dir in ORTHOGONAL_DIRS {
-            let candidate = GridPoint::new(
-                (point.x() as isize + dir.0) as usize,
-                (point.y() as isize + dir.1) as usize,
-            );
+            let candidate = GridPoint::new(point.x() + dir.0, point.y() + dir.1);
             let candidate_value = grid.get(&candidate);
             if candidate_value.is_some()
                 && (*current_value as usize + 1) >= *candidate_value.unwrap() as usize
@@ -52,13 +49,16 @@ impl Solver for Problem {
                     'S' => {
                         if i != 0 {
                             //ugly
-                            start = GridPoint::new(0, (i as f64 / w as f64).ceil() as usize);
+                            start = GridPoint::new(0, (i as f64 / w as f64).ceil() as isize);
                         }
                         'a'
                     }
                     'E' => {
                         //ugly
-                        end = GridPoint::new(i % w, (i as f64 / w as f64).floor() as usize);
+                        end = GridPoint::new(
+                            (i % w) as isize,
+                            (i as f64 / w as f64).floor() as isize,
+                        );
                         'z'
                     }
                     c => c,

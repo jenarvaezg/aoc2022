@@ -2,6 +2,13 @@ use crate::solver::Solver;
 use std::error::Error;
 use std::fs;
 mod day1;
+mod day10;
+mod day11;
+mod day12;
+mod day13;
+mod day14;
+mod day15;
+mod day16;
 mod day2;
 mod day3;
 mod day4;
@@ -10,13 +17,7 @@ mod day6;
 mod day7;
 mod day8;
 mod day9;
-mod day10;
-mod day11;
-mod day12;
-mod day13;
-mod day14;
-mod day15;
-// End imports       
+// End imports
 
 fn load_day(day: u32) -> Result<String, Box<dyn Error>> {
     Ok(fs::read_to_string(format!("inputs/day{}.txt", day))?)
@@ -40,6 +41,7 @@ pub fn solve(day: u32) {
         13 => day13::Problem {}.solve(raw_input),
         14 => day14::Problem {}.solve(raw_input),
         15 => day15::Problem {}.solve(raw_input),
+        16 => day16::Problem {}.solve(raw_input),
         d => println!("Day {} has not been solved yet", d),
     }
 }

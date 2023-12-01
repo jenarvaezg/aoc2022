@@ -156,7 +156,7 @@ fn possible_pressures_released<'a>(
     max_steps: usize,
 ) -> Vec<(usize, Option<HashSet<&'a String>>)> {
     if steps == max_steps {
-        return vec![(released, Some(open.clone()))];
+        return vec![(released, Some(open))];
     }
 
     let unopened: HashSet<&String> = distances
@@ -165,10 +165,7 @@ fn possible_pressures_released<'a>(
         .collect();
 
     if unopened.is_empty() {
-        return vec![(
-            released + (max_steps - steps) * flow_rate,
-            Some(open.clone()),
-        )];
+        return vec![(released + (max_steps - steps) * flow_rate, Some(open))];
     }
 
     unopened
